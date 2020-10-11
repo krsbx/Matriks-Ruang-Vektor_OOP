@@ -7,9 +7,9 @@ using namespace std;
 
     void MenuClass::Menu(){
         cout << "Pilih Aksi : " << endl;
-        cout << "1. Sistem Persamaan Linier n Variable" << endl;
-        cout << "2. Menghitung Determinan" << endl;
-        cout << "3. Menentukan Matriks Balikan" << endl;
+        cout << "1. Sistem Persamaan Linier n Variable" << endl; //Completed 4 of 5
+        cout << "2. Menghitung Determinan" << endl; //Completed
+        cout << "3. Menentukan Matriks Balikan" << endl; //Pending
         cout << "4. Keluar" << endl;
         cout << "Masukkan Pilihan : ";
         int i;
@@ -37,12 +37,12 @@ using namespace std;
         int i;
         cin >> i;
         switch(i){
+            SPLClass pertama;
             case 1:
-                SPLClass pertama;
-                pertama.SPL();
+                pertama.SPLGauss();
             break;
             case 2:
-                
+                pertama.SPLGaussJordan();
             break;
             case 3:
 
