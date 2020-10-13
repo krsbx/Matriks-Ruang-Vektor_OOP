@@ -1,11 +1,10 @@
 #ifndef DETERMINANCLASS_H
 #define DETERMINANCLASS_H
-#define N 100
+#include "OBE.h"
+
 class DeterminanClass{
     public:
         void ReduksiDeterminan();
-        float OperasiBarisElementer(float a[][N], int n);
-        void TukarBaris(float a[][N], int n, int y1, int y2, int* t);
         float GetDeterminant(float a[][N], int n, int t);
 
         void EkspansiKofaktor();

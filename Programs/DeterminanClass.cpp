@@ -13,6 +13,8 @@ using namespace std;
         //Deklarasi Determinan
         //Deklarasi Matrix
         float a[n][N];
+        //Penentu Jumlah Penukaran
+        int swap = 0;
         for(int i = 0; i < n; i++){
             for(int j = 0; j < n; j++){
                 //Menerima Inputan Untuk Matrix Aij
@@ -20,57 +22,9 @@ using namespace std;
                 cin >> a[i][j];
             }
         }
-        float det = OperasiBarisElementer(a, n);
-        cout << "Determinan Dari Matrix : " << det << endl;
-    }
-
-    float DeterminanClass::OperasiBarisElementer(float a[][N], int n){
-        //Penentu Banyak Penukaran
-        int t = 0;
-        //Perulangan Pada Kolom
-        for(int j = 0; j < n; j++){
-            //Peroleh Index Untuk Pengecekan
-            int maxId = j;
-            //Peroleh Nilai Untuk Pengecekan
-            float maxValue = a[maxId][j];
-            //Perulangan Pada Baris
-            for(int i = j+1; i < n; i++){
-                //Cek Nilai Lebih Besar Dengan Nilai Mutlak
-                if((a[i][j] > 0 ? a[i][j] : -1*a[i][j]) > maxValue){
-                    maxId = i;
-                    maxValue = a[i][j];
-                }
-            }
-
-            //Return Jika 0 Pada Diagonal Utama
-            if(!a[j][maxId]) return j;
-
-            //Tukarkan Baris
-            if(maxId != j) TukarBaris(a, n, j, maxId, &t);
-
-            //Eliminasi Baris
-            for(int i = j+1; i < n; i++){
-                float x = a[j][j];
-                float y = a[i][j];
-                //Perulangan Pada Kolom
-                for(int k = 0; k < n; k++){
-                    //Peroleh 0
-                    a[i][k] -= a[j][k] * y/x;
-                }
-            }
-        }
-        return GetDeterminant(a, n, t);
-    }
-
-    //Tukarkan Baris Pada Matrix A
-    void DeterminanClass::TukarBaris(float a[][N], int n, int y1, int y2, int* t){
-        //Tukarkan Nilai Pada Baris
-        for(int i = 0; i < n; i++){
-            float temp = a[y1][i];
-            a[y1][i] = a[y2][i];
-            a[y2][i] = temp;
-        }
-        *t += 1;
+        OBE::OperasiBarisElementer(a, NULL, 0, n, -1, &swap);
+        float det = GetDeterminant(a, n, swap);
+        cout << "Determinan Dari Matrix  A = " << det << endl;
     }
 
     float DeterminanClass::GetDeterminant(float a[][N], int n, int t){
@@ -85,6 +39,7 @@ using namespace std;
         return det;
     }
     #pragma endregion
+    
     #pragma region Ekspansi Kofaktor
     void DeterminanClass::EkspansiKofaktor(){
         // Deklarasi Ukuran Matrix
@@ -102,14 +57,7 @@ using namespace std;
                 cin >> a[i][j];
             }
         }
-        cout << "Determinan Dari Matrix : " << endl;
-        for(int i = 0; i < n; i++){
-            for(int j = 0; j < n; j++){
-                cout << a[i][j] << "\t";
-            }
-            cout << endl;
-        }
-        cout << "Determinan = " << Ekspansi(a, n);
+        cout << "Determinan Dari Matrix A = " << Ekspansi(a, n);
     }
 
     float DeterminanClass::Ekspansi(float a[][N], int n){

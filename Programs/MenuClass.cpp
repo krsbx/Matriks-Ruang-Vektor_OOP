@@ -47,7 +47,8 @@ using namespace std;
                 pertama.SPLGaussJordan();
             break;
             case 3:
-
+                InverseMethod inverse;
+                inverse.InverseSPL();
             break;
             case 4:
                 CramerClass cramer;
@@ -60,31 +61,21 @@ using namespace std;
     }
     void MenuClass::Kedua(){
         cout << "Pilih Metode : " << endl;
-        cout << "1. Eliminasi Gauss" << endl; //Completed
-        cout << "2. Eliminasi Gauss-Jordan" << endl; //Completed
-        cout << "3. Metode Matriks Balikan" << endl; //On Going
-        cout << "4. Kaidah Cramer" << endl; //Completed
-        cout << "5. Kembali Ke Menu Sebelumnya" << endl; //Completed
+        cout << "1. Reduksi Baris" << endl; //Completed
+        cout << "2. Ekspansi Kofaktor" << endl; //Completed
+        cout << "3. Kembali Ke Menu Sebelumnya" << endl; //Completed
         cout << "Masukkan Pilihan : ";
         int i;
         cin >> i;
         switch(i){
-            SPLClass pertama;
+            DeterminanClass deter;
             case 1:
-                pertama.SPLGauss();
+                deter.ReduksiDeterminan();
             break;
             case 2:
-                pertama.SPLGaussJordan();
+                deter.EkspansiKofaktor();
             break;
             case 3:
-                InverseMethod inverse;
-                inverse.InverseSPL();
-            break;
-            case 4:
-                CramerClass cramer;
-                cramer.Cramer();
-            break;
-            case 5:
                 Menu();
             break;
         }

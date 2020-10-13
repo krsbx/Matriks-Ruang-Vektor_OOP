@@ -1,4 +1,5 @@
 #include<iostream>
+#include "OBE.h"
 #include "SPLClass.h"
 using namespace std;
 
@@ -24,7 +25,8 @@ using namespace std;
             cout << "Masukkan Hasil Dari Persamaan : ";
             cin >> a[i][n];
         }
-        int cek = OperasiBarisElementer(a, m, n);
+
+        int cek = OBE::OperasiBarisElementer(a, NULL, m, n, -1, NULL);
 
         if(cek != -1){
             cout << "Berkemungkinan Tidak Bersolusi" << endl;
@@ -87,7 +89,8 @@ using namespace std;
             cout << "Masukkan Hasil Dari Persamaan : ";
             cin >> a[i][n];
         }
-        int cek = OperasiBarisElementer(a, m, n);
+
+        int cek = OBE::OperasiBarisElementer(a, NULL, m, n, -1, NULL);
 
         if(cek != -1){
             cout << "Berkemungkinan Tidak Bersolusi" << endl;
@@ -123,48 +126,6 @@ using namespace std;
             x[i] = a[i][n]/a[i][i];
             cout << "X[" << i+1 << "] = " << x[i] << endl;
         }
-    }
-    #pragma endregion
-
-    int SPLClass::OperasiBarisElementer(float a[][N], int m, int n){
-        for(int j = 0; j < n; j++){
-            //Peroleh Index Untuk Pengecekan
-            int maxId = j;
-            //Peroleh Nilai Untuk Pengecekan
-            float maxValue = a[maxId][j]; //Elemen Matrix Pada Diagonal Utama
-            //Pengecekan Nilai Pada Elemen Matrix i,j > Dari maxValue
-            for(int i = j+1; i < m; i++){
-                if((a[i][j] > 0 ? a[i][j] : -1*a[i][j]) > maxValue){
-                    maxId = i;
-                    maxValue = a[i][j];
-                }
-            }
-
-            //Kembalikan Nilai Jika 0 Pada Diagonal Utama
-            if(!a[j][maxId]) return j;
-
-            if(maxId != j) TukarBaris(a, n, j, maxId);
-
-            //Eliminasi Baris
-            for(int i = j+1; i < m; i++){
-                float x = a[j][j];
-                float y = a[i][j];
-                for(int k = 0; k < n+1; k++){
-                    //Peroleh 0
-                    a[i][k] -= a[j][k] * y/x;
-                }
-            }
-        }
         return -1;
     }
-    
-    //Pertukarkan Baris Dimana |y1| < |y2|
-    //Dimana y1 dan y2 adalah baris pada diagonal utama
-    void SPLClass::TukarBaris(float a[][N], int n,int y1,int y2){
-        //Penukaran Baris
-        for(int i = 0; i < n+1; i++){
-            float temp = a[y1][i];
-            a[y1][i] = a[y2][i];
-            a[y2][i] = temp;
-        }
-    }
+    #pragma endregion

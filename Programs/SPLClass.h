@@ -1,6 +1,7 @@
 #ifndef SPLCLASS_H
 #define SPLCLASS_H
-#define N 100
+#include "OBE.h"
+
 class SPLClass{
     public:
     void SPLGauss();

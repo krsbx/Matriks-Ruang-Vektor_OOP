@@ -26,8 +26,9 @@ using namespace std;
             cin >> b[i];
         }
 
-        InverseClass inverse;
-        inverse.OperasiBarisElementer(a, n);
+        InverseClass::AddIdentitas(a, n);
+        InverseClass::BentukIdentitas(a, n);
+        InverseClass::BackwardPhase(a, n);
 
         cout << "Sehingga : " << endl;
         for(int i = 0; i < n; i++){
