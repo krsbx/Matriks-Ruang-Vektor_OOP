@@ -2,14 +2,16 @@
 #include "CramerClass.h"
 #include "DeterminanClass.h"
 #include "SPLClass.h"
+#include "InverseClass.h"
+#include "InverseMethod.h"
 #include<iostream>
 using namespace std;
 
     void MenuClass::Menu(){
         cout << "Pilih Aksi : " << endl;
-        cout << "1. Sistem Persamaan Linier n Variable" << endl; //Completed 4 of 5
+        cout << "1. Sistem Persamaan Linier n Variable" << endl; //Completed
         cout << "2. Menghitung Determinan" << endl; //Completed
-        cout << "3. Menentukan Matriks Balikan" << endl; //Pending
+        cout << "3. Menentukan Matriks Balikan" << endl; //Completed
         cout << "4. Keluar" << endl;
         cout << "Masukkan Pilihan : ";
         int i;
@@ -58,25 +60,36 @@ using namespace std;
     }
     void MenuClass::Kedua(){
         cout << "Pilih Metode : " << endl;
-        cout << "1. Reduksi Baris" << endl; //Completed
-        cout << "2. Ekspansi Kofaktor" << endl; //Completed
-        cout << "3. Kembali Ke Menu Sebelumnya" << endl; //Completed
+        cout << "1. Eliminasi Gauss" << endl; //Completed
+        cout << "2. Eliminasi Gauss-Jordan" << endl; //Completed
+        cout << "3. Metode Matriks Balikan" << endl; //On Going
+        cout << "4. Kaidah Cramer" << endl; //Completed
+        cout << "5. Kembali Ke Menu Sebelumnya" << endl; //Completed
         cout << "Masukkan Pilihan : ";
         int i;
         cin >> i;
         switch(i){
-            DeterminanClass deter;
+            SPLClass pertama;
             case 1:
-                deter.ReduksiDeterminan();
+                pertama.SPLGauss();
             break;
             case 2:
-                deter.EkspansiKofaktor();
+                pertama.SPLGaussJordan();
             break;
             case 3:
+                InverseMethod inverse;
+                inverse.InverseSPL();
+            break;
+            case 4:
+                CramerClass cramer;
+                cramer.Cramer();
+            break;
+            case 5:
                 Menu();
             break;
         }
     }
     void MenuClass::Ketiga(){
-
+        InverseClass inverse;
+        inverse.Inverse();
     }

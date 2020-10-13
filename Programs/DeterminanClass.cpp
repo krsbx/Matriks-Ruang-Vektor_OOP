@@ -21,12 +21,6 @@ using namespace std;
             }
         }
         float det = OperasiBarisElementer(a, n);
-        for(int i = 0; i < n; i++){
-            for(int j = 0; j < n; j++){
-                cout << a[i][j] << "\t";
-            }
-            cout << endl;
-        }
         cout << "Determinan Dari Matrix : " << det << endl;
     }
 
@@ -41,6 +35,7 @@ using namespace std;
             float maxValue = a[maxId][j];
             //Perulangan Pada Baris
             for(int i = j+1; i < n; i++){
+                //Cek Nilai Lebih Besar Dengan Nilai Mutlak
                 if((a[i][j] > 0 ? a[i][j] : -1*a[i][j]) > maxValue){
                     maxId = i;
                     maxValue = a[i][j];
@@ -53,7 +48,7 @@ using namespace std;
             //Tukarkan Baris
             if(maxId != j) TukarBaris(a, n, j, maxId, &t);
 
-            //Perulangan Pada Baris
+            //Eliminasi Baris
             for(int i = j+1; i < n; i++){
                 float x = a[j][j];
                 float y = a[i][j];
@@ -67,6 +62,7 @@ using namespace std;
         return GetDeterminant(a, n, t);
     }
 
+    //Tukarkan Baris Pada Matrix A
     void DeterminanClass::TukarBaris(float a[][N], int n, int y1, int y2, int* t){
         //Tukarkan Nilai Pada Baris
         for(int i = 0; i < n; i++){

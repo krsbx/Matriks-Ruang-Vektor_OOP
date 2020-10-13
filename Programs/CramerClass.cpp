@@ -59,7 +59,7 @@ using namespace std;
             float maxValue = a[maxId][j];
             //Perulangan Pada Baris
             for(int i = j+1; i < n; i++){
-                //Cek Jika Nilai |a[i][j]| > maxValue
+                //Cek Nilai Lebih Besar Dengan Nilai Mutlak
                 if((a[i][j] > 0 ? a[i][j] : -1*a[i][j]) > maxValue){
                     maxId = i;
                     maxValue = a[i][j];
