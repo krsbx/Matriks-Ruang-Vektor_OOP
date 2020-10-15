@@ -56,7 +56,7 @@ using namespace std;
     }
 
     float DeterminanClass::Ekspansi(float a[][N], int n){
-        int Det = 0;
+        float Det = 0;
 
         if(n == 1) return a[0][0]; //Return satu jika satu elemen saja
 
