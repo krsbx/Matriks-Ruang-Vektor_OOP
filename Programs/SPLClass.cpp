@@ -1,10 +1,10 @@
 #include<iostream>
-#include "OBE.h"
+#include "Operasi.h"
 #include "SPLClass.h"
 using namespace std;
 
     #pragma region GaussElimination
-    void SPLClass::SPLGauss(){
+    void SPLClass::SPLGaussKeyboard(){
         //Deklarasi Persamaan
         int m, n;
         cout << "Masukkan Jumlah Persamaan : ";
@@ -25,8 +25,11 @@ using namespace std;
             cout << "Masukkan Hasil Dari Persamaan : ";
             cin >> a[i][n];
         }
+        SPLGauss(a, m, n);
+    }
 
-        int cek = OBE::OperasiBarisElementer(a, NULL, m, n, -1, NULL);
+    void SPLClass::SPLGauss(float a[][N], int m, int n){
+        int cek = Operasi::OperasiBarisElementer(a, NULL, m, n, -1, NULL);
 
         if(cek != -1){
             cout << "Berkemungkinan Tidak Bersolusi" << endl;
@@ -37,13 +40,6 @@ using namespace std;
             return;
         }
 
-        cout << endl;
-        for(int i = 0; i < m; i++){
-            for(int j = 0; j < n+1; j++){
-                cout << a[i][j] << "\t";
-            }
-            cout << endl;
-        }
         BackwardSubtitution(a, m, n);
     }
 
@@ -60,7 +56,7 @@ using namespace std;
             //Peroleh Nilai Akhir/Solusi
             x[i] /= a[i][i];
         }
-        cout << "Soulis Dari Persamaan Tersebut Ialah : " << endl;
+        cout << "Solusi Dari Persamaan Tersebut Ialah : " << endl;
         for(int i = 0 ; i < n; i++){
             cout << "X[" << i+1 << "] = " << x[i] << endl;
         }
@@ -68,7 +64,7 @@ using namespace std;
     #pragma endregion
 
     #pragma region GaussJordanElimination
-    void SPLClass::SPLGaussJordan(){
+    void SPLClass::SPLGaussJordanKeyboard(){
         //Deklarasi Persamaan
         int m, n;
         cout << "Masukkan Jumlah Persamaan : ";
@@ -90,7 +86,14 @@ using namespace std;
             cin >> a[i][n];
         }
 
-        int cek = OBE::OperasiBarisElementer(a, NULL, m, n, -1, NULL);
+        SPLGaussJordan(a, m, n);
+    }
+
+    void SPLClass::SPLGaussJordan(float a[][N], int m, int n){
+        //Deklarasi Banyak Variable
+        float x[n];
+
+        int cek = Operasi::OperasiBarisElementer(a, NULL, m, n, -1, NULL);
 
         if(cek != -1){
             cout << "Berkemungkinan Tidak Bersolusi" << endl;
@@ -101,31 +104,13 @@ using namespace std;
             return;
         }
 
-        BackwardPhase(a, m, n);
-    }
+        Operasi::BackwardPhase(a, 0, n);
 
-    float SPLClass::BackwardPhase(float a[][N], int m, int n){
-        //Deklarasi Banyak Variable
-        float x[n];
-        //Perulangan Pada Kolom
-        for(int j = n-1; j >= 0; j--){
-            //Perulangan Pada Baris dari j-1 hingga Baris 0
-            for(int i = j-1; i >= 0; i--){
-                float x = a[j][j];
-                float y = a[i][j];
-                //Perulangan Untuk Memperoleh Baris Eselon Tereduksi 
-                for(int k = n+1; k >= i; k--){
-                    //Peroleh 0 Jika y/x tidak sama dengan 0
-                    if((y/x > 0 ? y/x : -1 * y/x) > 0)
-                        a[i][k] -= a[j][k] * y/x;
-                }
-            }
-        }
         cout << "Solusi Dari Persamaan Tersebut Ialah : " << endl;
         for(int i = 0; i < m; i++){
             x[i] = a[i][n]/a[i][i];
             cout << "X[" << i+1 << "] = " << x[i] << endl;
         }
-        return -1;
     }
+
     #pragma endregion

@@ -1,8 +1,8 @@
-#include "OBE.h"
+#include "Operasi.h"
 #include <iostream>
 using namespace std;
 
-    float OBE::OperasiBarisElementer(float a[][N], float b[], int m, int n, int ganti, int* swap){
+    float Operasi::OperasiBarisElementer(float a[][N], float b[], int m, int n, int ganti, int* swap){
 
         //Ganti Elemen B ke A
         if(ganti > -1){
@@ -39,7 +39,7 @@ using namespace std;
                 float x = a[j][j];
                 float y = a[i][j];
                 //Bentuk Segitiga Atas
-                for(int k = 0; k < (m != 0 ? n+1 : n); k++){
+                for(int k = 0; k < (m > 0 ? n+1 : n); k++){
                     //Peroleh 0
                     a[i][k] -= a[j][k] * y/x;
                 }
@@ -48,7 +48,7 @@ using namespace std;
         return -1;
     }
 
-    float OBE::OBE_Inverse(float a[][N], int n){
+    float Operasi::OBE_Inverse(float a[][N], int n){
         //Perulangan Pada Kolom
         for(int j = 0; j < n; j++){
             //Peroleh Index Untuk Pengecekan
@@ -82,7 +82,7 @@ using namespace std;
 
     //Pertukarkan Baris Dimana |y1| < |y2|
     //Dimana y1 dan y2 adalah baris pada diagonal utama
-    void OBE::TukarBaris(float a[][N], int n, int y1, int y2, int* swap){
+    void Operasi::TukarBaris(float a[][N], int n, int y1, int y2, int* swap){
         //Penukaran Baris
         for(int i = 0; i < n+1; i++){
             float temp = a[y1][i];
@@ -92,4 +92,32 @@ using namespace std;
         //Hitung Jumlah Penukaran Untuk Determinan
         if(swap != NULL)
             *swap += 1;
+    }
+
+    float Operasi::GetDeterminant(float a[][N], int n, int t){
+        //Deklarasi Variable Det
+        float det = 1;
+        //Kalikan Semua Nilai Pada Diagonal Utama
+        for(int i = 0; i < n; i++){
+            det *= a[i][i];
+        }
+        
+        if(t % 2 == 1) det *= -1;
+
+        return det;
+    }
+
+    void Operasi::BackwardPhase(float a[][N], int m, int n){
+        //Perulangan Pada Kolom
+        for(int j = n-1; j >= 0; j--){
+            //Perulangan Pada Baris dari j-1 hingga Baris 0
+            for(int i = j-1; i >= 0; i--){
+                float x = a[j][j];
+                float y = a[i][j];
+                //Perulangan Untuk Memperoleh Baris Eselon Tereduksi 
+                for(int k = (m > 0 ? m : n+1); k >= i; k--){
+                        a[i][k] -= a[j][k] * y/x;
+                }
+            }
+        }
     }

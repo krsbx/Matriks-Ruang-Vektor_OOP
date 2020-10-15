@@ -1,16 +1,13 @@
 #include <iostream>
 #include "CramerClass.h"
-#include "OBE.h"
 using namespace std;
 
-    void CramerClass::Cramer(){
+    void CramerClass::CramerKeyboard(){
         // Deklarasi Ukuran Matrix
         int n;
         //Menerima Ukuran Matrix
         cout << "Masukkan Ukuran Matrix : ";
         cin >> n;
-        //Deklarasi Determinan
-        float det[n+1];
         //Deklarasi Matrix
         float a[n][N];
         float b[n];
@@ -23,7 +20,13 @@ using namespace std;
             cout << "Masukkan Hasil Dari Persamaan " << i+1 << " : ";
             cin >> b[i];
         }
-        
+        Cramer(a, b, n);
+    }
+
+    void CramerClass::Cramer(float a[][N], float b[], int n){
+        //Deklarasi Determinan
+        float det[n+1];
+
         for(int i = -1; i < n; i++){
             int swap = 0;
             float temp[n][N];
@@ -33,8 +36,8 @@ using namespace std;
                 }
             }
             
-            OBE::OperasiBarisElementer(temp, b, 0, n, i, &swap);
-            det[i+1] = GetDeterminant(temp, n, swap);
+            Operasi::OperasiBarisElementer(temp, b, 0, n, i, &swap);
+            det[i+1] = Operasi::GetDeterminant(temp, n, swap);
         }
         
         cout << "Solusi Dari Persamaan Ialah : " << endl;
@@ -43,17 +46,3 @@ using namespace std;
         }
     }
 
-    float CramerClass::GetDeterminant(float a[][N], int n, int t){
-        //Deklarasi Variable Det
-        float det = 1;
-
-        //Peroleh Semua Perkalian Pada Diagonal Utama
-        for(int i = 0; i < n; i++){
-            det *= a[i][i];
-        }
-
-        if(t % 2 == 1)  det *= -1;
-
-        //Kembalikan Nilai Diagonal Utama
-        return det;
-    }

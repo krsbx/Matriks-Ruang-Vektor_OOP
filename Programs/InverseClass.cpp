@@ -2,7 +2,7 @@
 #include<iostream>
 using namespace std;
 
-    void InverseClass::Inverse(){
+    void InverseClass::InverseKeyboard(){
         // Deklarasi Ukuran Matrix
         int n;
         //Menerima Ukuran Matrix
@@ -18,10 +18,13 @@ using namespace std;
                 cin >> a[i][j];
             }
         }
+        Inverse(a, n);
+    }
 
+    void InverseClass::Inverse(float a[][N], int n){
         AddIdentitas(a, n);
         BentukIdentitas(a, n);
-        BackwardPhase(a, n);
+        Operasi::BackwardPhase(a, n*2, n);
 
         cout << "Inverse Matrix A ialah : " << endl;
         for(int i = 0; i < n; i++){
@@ -43,25 +46,9 @@ using namespace std;
                     a[i][j] = 0;
             }
         }
-        OBE::OBE_Inverse(a, n);
+        Operasi::OBE_Inverse(a, n);
     }
 
-    void InverseClass::BackwardPhase(float a[][N], int n){
-        //Perulangan Pada Kolom
-        for(int j = n-1; j >= 0; j--){
-            //Perulangan Pada Baris
-            for(int i = j-1; i >= 0; i--){
-                //X Untuk Matrix A
-                float x1 = a[j][j];
-                float x2 = a[i][j];
-                //Peroleh 0 Pada Matrix A
-                for(int k = n*2-1; k >= i; k--){
-                    a[i][k] -= a[j][k] * x2/x1;
-                }
-            }
-        }
-    }
-    
     void InverseClass::BentukIdentitas(float a[][N], int n){
         //Peroleh 1 Utama
         for(int i = 0; i < n; i++){

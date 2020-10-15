@@ -1,13 +1,14 @@
 #ifndef DETERMINANCLASS_H
 #define DETERMINANCLASS_H
-#include "OBE.h"
+#include "Operasi.h"
 
 class DeterminanClass{
     public:
-        void ReduksiDeterminan();
-        float GetDeterminant(float a[][N], int n, int t);
+        void ReduksiDeterminanKeyboard();
+        void ReduksiDeterminan(float a[][N], int n);
 
-        void EkspansiKofaktor();
+        void EkspansiKofaktorKeyboard();
+        void EkspansiKofaktor(float a[][N], int n);
         float Ekspansi(float a[][N], int n);
         void Kofaktor(float a[][N], float CoFac[][N], int b, int k, int n);
 };

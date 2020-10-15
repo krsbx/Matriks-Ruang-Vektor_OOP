@@ -2,19 +2,15 @@
 #include "DeterminanClass.h"
 using namespace std;
 
-
     #pragma region ReduksiBaris
-    void DeterminanClass::ReduksiDeterminan(){
+    void DeterminanClass::ReduksiDeterminanKeyboard(){
         // Deklarasi Ukuran Matrix
         int n;
         //Menerima Ukuran Matrix
         cout << "Masukkan Ukuran Matrix : ";
         cin >> n;
-        //Deklarasi Determinan
         //Deklarasi Matrix
         float a[n][N];
-        //Penentu Jumlah Penukaran
-        int swap = 0;
         for(int i = 0; i < n; i++){
             for(int j = 0; j < n; j++){
                 //Menerima Inputan Untuk Matrix Aij
@@ -22,26 +18,21 @@ using namespace std;
                 cin >> a[i][j];
             }
         }
-        OBE::OperasiBarisElementer(a, NULL, 0, n, -1, &swap);
-        float det = GetDeterminant(a, n, swap);
-        cout << "Determinan Dari Matrix  A = " << det << endl;
+        ReduksiDeterminan(a, n);
     }
 
-    float DeterminanClass::GetDeterminant(float a[][N], int n, int t){
-        float det = 1;
-        //Kalikan Semua Nilai Pada Diagonal Utama
-        for(int i = 0; i < n; i++){
-            det *= a[i][i];
-        }
-        
-        if(t % 2 == 1) det *= -1;
-
-        return det;
+    void DeterminanClass::ReduksiDeterminan(float a[][N], int n){
+        //Penentu Jumlah Penukaran
+        int swap = 0;
+        Operasi::OperasiBarisElementer(a, NULL, 0, n, -1, &swap);
+        //Deklarasi Determinan
+        float det = Operasi::GetDeterminant(a, n, swap);
+        cout << "Determinan Dari Matrix  A = " << det << endl;
     }
     #pragma endregion
     
     #pragma region Ekspansi Kofaktor
-    void DeterminanClass::EkspansiKofaktor(){
+    void DeterminanClass::EkspansiKofaktorKeyboard(){
         // Deklarasi Ukuran Matrix
         int n;
         //Menerima Ukuran Matrix
@@ -57,6 +48,10 @@ using namespace std;
                 cin >> a[i][j];
             }
         }
+        EkspansiKofaktor(a, n);
+    }
+
+    void DeterminanClass::EkspansiKofaktor(float a[][N], int n){
         cout << "Determinan Dari Matrix A = " << Ekspansi(a, n);
     }
 

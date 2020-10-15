@@ -3,7 +3,7 @@
 #include<iostream>
 using namespace std;
 
-    void InverseMethod::InverseSPL(){
+    void InverseMethod::InverseSPLKeyboard(){
         // Deklarasi Ukuran Matrix
         int n;
         //Menerima Ukuran Matrix
@@ -13,8 +13,6 @@ using namespace std;
         float a[n][N];
         //Deklarasi Matrix Hasil
         float b[n];
-        //Deklarasi Matrix Solusi
-        float x[n];
         for(int i = 0; i < n; i++){
             for(int j = 0; j < n; j++){
                 //Menerima Inputan Untuk Matrix Aij
@@ -25,10 +23,15 @@ using namespace std;
             cout << "Masukkan Hasil Dari Persamaan " << i+1 << " : ";
             cin >> b[i];
         }
-
+        InverseSPL(a, b, n);
+    }
+    
+    void InverseMethod::InverseSPL(float a[][N], float b[], int n){
+        //Deklarasi Matrix Solusi
+        float x[n];
         InverseClass::AddIdentitas(a, n);
         InverseClass::BentukIdentitas(a, n);
-        InverseClass::BackwardPhase(a, n);
+        Operasi::BackwardPhase(a, n*2, n);
 
         cout << "Sehingga : " << endl;
         for(int i = 0; i < n; i++){

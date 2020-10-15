@@ -41,18 +41,18 @@ using namespace std;
         switch(i){
             SPLClass pertama;
             case 1:
-                pertama.SPLGauss();
+                pertama.SPLGaussKeyboard();
             break;
             case 2:
-                pertama.SPLGaussJordan();
+                pertama.SPLGaussJordanKeyboard();
             break;
             case 3:
                 InverseMethod inverse;
-                inverse.InverseSPL();
+                inverse.InverseSPLKeyboard();
             break;
             case 4:
                 CramerClass cramer;
-                cramer.Cramer();
+                cramer.CramerKeyboard();
             break;
             case 5:
                 Menu();
@@ -70,10 +70,10 @@ using namespace std;
         switch(i){
             DeterminanClass deter;
             case 1:
-                deter.ReduksiDeterminan();
+                deter.ReduksiDeterminanKeyboard();
             break;
             case 2:
-                deter.EkspansiKofaktor();
+                deter.EkspansiKofaktorKeyboard();
             break;
             case 3:
                 Menu();
@@ -82,5 +82,5 @@ using namespace std;
     }
     void MenuClass::Ketiga(){
         InverseClass inverse;
-        inverse.Inverse();
+        inverse.InverseKeyboard();
     }
