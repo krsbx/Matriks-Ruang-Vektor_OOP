@@ -1,5 +1,6 @@
 #include<iostream>
 #include "DeterminanClass.h"
+#include "SaveOutput.h"
 using namespace std;
 
     #pragma region ReduksiBaris
@@ -22,12 +23,25 @@ using namespace std;
     }
 
     void DeterminanClass::ReduksiDeterminan(float a[][N], int n){
+        //Menerima nama file dari user (disertai dengan .txt). Contoh : Text.txt
+        cout << "Masukkan Nama File Untuk Disimpan (Disertai dengan Ekstensi) : " << endl;
+        string nama;
+        cin >> nama;
+
+        //Menuliskan Matrix pada file
+        SaveOutput::SaveString(nama, "Determinan Dari Matrix : ");
+        SaveOutput::SaveFile(nama, a, NULL, n, n);
+
         //Penentu Jumlah Penukaran
         int swap = 0;
         Operasi::OperasiBarisElementer(a, NULL, 0, n, -1, &swap);
         //Deklarasi Determinan
         float det = Operasi::GetDeterminant(a, n, swap);
         cout << "Determinan Dari Matrix  A = " << det << endl;
+
+        //Cetak Determinan pada file
+        SaveOutput::SaveString(nama, "Ialah : ");
+        SaveOutput::SaveString(nama, to_string(det));
     }
     #pragma endregion
     
@@ -52,7 +66,22 @@ using namespace std;
     }
 
     void DeterminanClass::EkspansiKofaktor(float a[][N], int n){
-        cout << "Determinan Dari Matrix A = " << Ekspansi(a, n);
+        //Menerima nama file dari user (disertai dengan .txt). Contoh : Text.txt
+        cout << "Masukkan Nama File Untuk Disimpan (Disertai dengan Ekstensi) : " << endl;
+        string nama;
+        cin >> nama;
+
+        //Menuliskan Matrix pada file
+        SaveOutput::SaveString(nama, "Determinan Dari Matrix : ");
+        SaveOutput::SaveFile(nama, a, NULL, n, n);
+
+        //Deklarasi Determinan
+        float det = Ekspansi(a, n);
+        cout << "Determinan Dari Matrix A = " << det;
+
+        //Cetak Determinan pada file
+        SaveOutput::SaveString(nama, "Ialah : ");
+        SaveOutput::SaveString(nama, to_string(det));
     }
 
     float DeterminanClass::Ekspansi(float a[][N], int n){

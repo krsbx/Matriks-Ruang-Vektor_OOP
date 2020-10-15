@@ -259,7 +259,7 @@ using namespace std;
     }
 
     void MenuClass::Balikan(){
-         cout << "1. Input Dari Keyboard" << endl;
+        cout << "1. Input Dari Keyboard" << endl;
         cout << "2. Input Dari File" << endl;
         cout << "Masukkan Pilihan : ";
         int i;

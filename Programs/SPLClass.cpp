@@ -1,6 +1,7 @@
 #include<iostream>
 #include "Operasi.h"
 #include "SPLClass.h"
+#include "SaveOutput.h"
 using namespace std;
 
     #pragma region GaussElimination
@@ -29,23 +30,39 @@ using namespace std;
     }
 
     void SPLClass::SPLGauss(float a[][N], int m, int n){
+        //Menerima nama file dari user (disertai dengan .txt). Contoh : Text.txt
+        cout << "Masukkan Nama File Untuk Disimpan (Disertai dengan Ekstensi) : " << endl;
+        string nama;
+        cin >> nama;
+        
+        //Menuliskan Matrix pada file
+        SaveOutput::SaveString(nama, "Solusi Dari Matrix : ");
+        SaveOutput::SaveFile(nama, a, NULL, n, n);
+        SaveOutput::SaveString(nama, "Ialah : ");
+
+        //Deklarasi Matrix Solusi
+        float x[n];
         int cek = Operasi::OperasiBarisElementer(a, NULL, m, n, -1, NULL);
 
         if(cek != -1){
             cout << "Berkemungkinan Tidak Bersolusi" << endl;
-            if(a[cek][n])
+            if(a[cek][n]){
                 cout << "Tidak Bisa Di proses" << endl;
-            else
+                SaveOutput::SaveString(nama, "Matrix Tidak Bisa Di proses");
+            }else{
                 cout << "Memiliki Solusi Banyak" << endl;
+                SaveOutput::SaveString(nama, "Matrix Memiliki Solusi Banyak");
+            }
             return;
         }
 
-        BackwardSubtitution(a, m, n);
+        BackwardSubtitution(a, x, m, n);
+        
+        //Cetak Solusi pada file
+        SaveOutput::SaveFile(nama, NULL, x, 0, n);
     }
 
-    void SPLClass::BackwardSubtitution(float a[][N], int m, int n){
-        float x[n];
-
+    void SPLClass::BackwardSubtitution(float a[][N], float x[], int m, int n){
         for(int i = m-1; i >= 0; i--){
             //Peroleh Nilai Paling Akhir
             x[i] = a[i][n];
@@ -90,6 +107,16 @@ using namespace std;
     }
 
     void SPLClass::SPLGaussJordan(float a[][N], int m, int n){
+        //Menerima nama file dari user (disertai dengan .txt). Contoh : Text.txt
+        cout << "Masukkan Nama File Untuk Disimpan (Disertai dengan Ekstensi) : " << endl;
+        string nama;
+        cin >> nama;
+
+        //Menuliskan Matrix pada file
+        SaveOutput::SaveString(nama, "Solusi Dari Matrix : ");
+        SaveOutput::SaveFile(nama, a, NULL, n, n);
+        SaveOutput::SaveString(nama, "Ialah : ");
+
         //Deklarasi Banyak Variable
         float x[n];
 
@@ -97,10 +124,13 @@ using namespace std;
 
         if(cek != -1){
             cout << "Berkemungkinan Tidak Bersolusi" << endl;
-            if(a[cek][n])
+            if(a[cek][n]){
                 cout << "Tidak Bisa Di proses" << endl;
-            else
+                SaveOutput::SaveString(nama, "Matrix Tidak Bisa Di proses");
+            }else{
                 cout << "Memiliki Solusi Banyak" << endl;
+                SaveOutput::SaveString(nama, "Matrix Memiliki Solusi Banyak");
+            }
             return;
         }
 
@@ -111,6 +141,8 @@ using namespace std;
             x[i] = a[i][n]/a[i][i];
             cout << "X[" << i+1 << "] = " << x[i] << endl;
         }
+        //Cetak Solusi pada file
+        SaveOutput::SaveFile(nama, NULL, x, 0, n);
     }
 
     #pragma endregion

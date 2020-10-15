@@ -1,5 +1,6 @@
 #include <iostream>
 #include "CramerClass.h"
+#include "SaveOutput.h"
 using namespace std;
 
     void CramerClass::CramerKeyboard(){
@@ -24,8 +25,19 @@ using namespace std;
     }
 
     void CramerClass::Cramer(float a[][N], float b[], int n){
+        //Menerima nama file dari user (disertai dengan .txt). Contoh : Text.txt
+        cout << "Masukkan Nama File Untuk Disimpan (Disertai dengan Ekstensi) : " << endl;
+        string nama;
+        cin >> nama;
+        
+        //Menuliskan Matrix pada file
+        SaveOutput::SaveString(nama, "Solusi Dari Matrix : ");
+        SaveOutput::SaveFile(nama, a, NULL, n, n);
+
         //Deklarasi Determinan
         float det[n+1];
+        //Deklarasi Solusi
+        float x[n];
 
         for(int i = -1; i < n; i++){
             int swap = 0;
@@ -42,7 +54,11 @@ using namespace std;
         
         cout << "Solusi Dari Persamaan Ialah : " << endl;
         for(int i = 1; i < n+1; i++){
-            cout << "X[" << i << "] = " << det[i]/det[0] << endl;
+            x[i-1] = det[i]/det[0];
+            cout << "X[" << i << "] = " << x[i-1] << endl;
         }
+        
+        //Cetak Solusi pada file
+        SaveOutput::SaveString(nama, "Ialah : ");
+        SaveOutput::SaveFile(nama, NULL, x, 0, n);
     }
-

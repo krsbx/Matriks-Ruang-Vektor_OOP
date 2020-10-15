@@ -1,5 +1,6 @@
 #include "InverseMethod.h"
 #include "InverseClass.h"
+#include "SaveOutput.h"
 #include<iostream>
 using namespace std;
 
@@ -27,6 +28,15 @@ using namespace std;
     }
     
     void InverseMethod::InverseSPL(float a[][N], float b[], int n){
+        //Menerima nama file dari user (disertai dengan .txt). Contoh : Text.txt
+        cout << "Masukkan Nama File Untuk Disimpan (Disertai dengan Ekstensi) : " << endl;
+        string nama;
+        cin >> nama;
+
+        //Menuliskan Matrix pada file
+        SaveOutput::SaveString(nama, "Solusi Dari Matrix : ");
+        SaveOutput::SaveFile(nama, a, NULL, n, n);
+
         //Deklarasi Matrix Solusi
         float x[n];
         InverseClass::AddIdentitas(a, n);
@@ -39,6 +49,10 @@ using namespace std;
             x[i] = GetX(a, b, n, i);
             cout << x[i] << endl;
         }
+
+        //Cetak Solusi pada file
+        SaveOutput::SaveString(nama, "Ialah : ");
+        SaveOutput::SaveFile(nama, NULL, x, 0, n);
     }
 
     float InverseMethod::GetX(float a[][N], float b[], int n, int x){

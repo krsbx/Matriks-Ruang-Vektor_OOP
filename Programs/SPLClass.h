@@ -4,7 +4,7 @@
 
 class SPLClass{
     private:
-        void BackwardSubtitution(float a[][N], int m, int n);
+        void BackwardSubtitution(float a[][N], float x[], int m, int n);
     public:
         void SPLGaussKeyboard();
         void SPLGauss(float a[][N], int m, int n);

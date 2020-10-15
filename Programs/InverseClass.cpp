@@ -1,4 +1,5 @@
 #include "InverseClass.h"
+#include "SaveOutput.h"
 #include<iostream>
 using namespace std;
 
@@ -22,6 +23,15 @@ using namespace std;
     }
 
     void InverseClass::Inverse(float a[][N], int n){
+        //Menerima nama file dari user (disertai dengan .txt). Contoh : Text.txt
+        cout << "Masukkan Nama File Untuk Disimpan (Disertai dengan Ekstensi) : " << endl;
+        string nama;
+        cin >> nama;
+
+        //Menuliskan Matrix pada file
+        SaveOutput::SaveString(nama, "Inverse Dari Matrix : ");
+        SaveOutput::SaveFile(nama, a, NULL, n, n);
+
         AddIdentitas(a, n);
         BentukIdentitas(a, n);
         Operasi::BackwardPhase(a, n*2, n);
@@ -33,6 +43,10 @@ using namespace std;
             }
             cout << endl;
         }
+
+        //Cetak Inverse Matrix pada file
+        SaveOutput::SaveString(nama, "Ialah:");
+        SaveOutput::SaveFileInverse(nama, a, n, n*2);
     }
 
     void InverseClass::AddIdentitas(float a[][N], int n){
