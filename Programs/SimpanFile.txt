@@ -1,0 +1,142 @@
+Solusi Dari Matrix : 
+1	1	-1	-1	
+2	5	-7	-5	
+2	-1	1	3	
+5	2	-4	2	
+Ialah : 
+X[1] = -588672
+X[2] = 2.3547e+06
+X[3] = 883012
+X[4] = 883011
+Solusi Dari Matrix : 
+1	-1	0	0	1	
+1	1	0	-3	0	
+2	-1	0	1	-1	
+-1	2	0	-2	-1	
+7.00649e-45	5.60519e-45	9.08822e-39	0	4.2039e-45	
+Ialah : 
+Matrix Tidak Bisa Di proses
+Solusi Dari Matrix : 
+0	1	0	0	1	0	
+0	0	0	1	1	0	
+0	1	0	0	0	1	
+8.40779e-45	4.2039e-45	9.08878e-39	0	2.8026e-45	0	
+2.23242e-38	0	2.24208e-44	0	2.23242e-38	0	
+0	0	0	0	nan	1.76003e-42	
+Ialah : 
+Matrix Tidak Bisa Di proses
+Solusi Dari Matrix : 
+1	-1	2	-1	
+2	1	-2	-2	
+-1	2	-4	1	
+3	0	0	-3	
+Ialah : 
+X[1] = nan
+X[2] = nan
+X[3] = nan
+X[4] = nan
+Solusi Dari Matrix : 
+1	-1	2	-1	
+2	1	-2	-2	
+-1	2	-4	1	
+3	0	0	-3	
+Ialah : 
+Matrix Memiliki Solusi Banyak
+Solusi Dari Matrix : 
+1	-1	2	-1	-1	
+2	1	-2	-2	-2	
+-1	2	-4	1	1	
+3	0	0	-3	-3	
+Ialah : 
+X[1] = nan
+X[2] = nan
+X[3] = nan
+X[4] = nan
+X[5] = nan
+Inverse Dari Matrix : 
+1	-1	2	-1	
+2	1	-2	-2	
+-1	2	-4	1	
+3	0	0	-3	
+Ialah:
+nan	nan	nan	nan	
+nan	nan	nan	nan	
+nan	nan	nan	nan	
+nan	nan	nan	nan	
+Inverse Dari Matrix : 
+1	-1	2	-1	
+2	1	-2	-2	
+-1	2	-4	1	
+3	0	0	-3	
+Ialah:
+nan	nan	nan	nan	
+nan	nan	nan	nan	
+nan	nan	nan	nan	
+nan	nan	nan	nan	
+Inverse Dari Matrix : 
+1	2	3	
+2	5	3	
+1	0	8	
+Ialah:
+-40	16	9	
+13	-5	-3	
+5	-2	-1	
+Inverse Dari Matrix : 
+1	-1	2	-1	
+2	1	-2	-2	
+-1	2	-4	1	
+3	0	0	-3	
+Ialah:
+nan	nan	nan	nan	
+nan	nan	nan	nan	
+nan	nan	nan	nan	
+nan	nan	nan	nan	
+Inverse Dari Matrix : 
+1	-1	2	-1	
+2	1	-2	-2	
+-1	2	-4	1	
+3	0	0	-3	
+Matrix Memiliki Solusi Banyak
+Ialah:
+nan	nan	nan	nan	
+nan	nan	nan	nan	
+nan	nan	nan	nan	
+inf	nan	inf	-inf	
+Solusi Dari Matrix : 
+1	-1	2	-1	
+2	1	-2	-2	
+-1	2	-4	1	
+3	0	0	-3	
+Ialah : 
+Matrix Memiliki Solusi Banyak
+Solusi Dari Matrix : 
+2	0	8	0	
+0	1	0	4	
+-4	0	6	0	
+0	-2	0	3	
+Ialah : 
+Matrix Tidak Bisa Di proses
+Solusi Dari Matrix : 
+8	1	3	2	
+2	9	-1	-2	
+1	3	2	-1	
+1	0	6	4	
+Ialah : 
+X[1] = -0.224324
+X[2] = 0.182432
+X[3] = 0.709459
+X[4] = -0.258108
+Solusi Dari Matrix : 
+0	4.59107e-41	0	0	0.000177728	4.59107e-41	4.2039e-45	0	0	0	0.000201392	4.59107e-41	
+0	0	0.000177743	4.59107e-41	9.0855e-39	0	1.12104e-44	0	0	0	0	0	
+1	0	2.77316e-39	0	1.4013e-45	0	1.43353e-42	0	7.15923e-42	0	1.5355e-37	0	
+0	0	2.8469e-39	0	0	0	0.000294955	4.59107e-41	2.8469e-39	0	9.08668e-39	0	
+0	0	8.38894e+06	0	0	0	2.02549e-39	0	0	0	2.02038e-39	0	
+0.61396	4.59107e-41	9.08823e-39	0	1.18089e-38	0	9.08813e-39	0	0	0	0.000298644	4.59107e-41	
+0	0	1.43725e-05	4.59107e-41	-0	0	0	0	1.62947e-05	4.59107e-41	1.4013e-45	0	
+0	0	0.000294426	4.59107e-41	-1.79108e-23	3.34588e-41	4.04975e-43	0	9.08813e-39	0	2.88042e-39	0	
+1	0	0.000299619	4.59107e-41	2.85939e-39	0	-4.76862e-07	0	9.08813e-39	0	4.62428e-43	0	
+0.04289	0	2.18603e-43	0	2.18603e-43	0	1.35003e-05	4.59107e-41	0	0	2.8469e-39	0	
+0.91421	6.16298e-33	2.8469e-39	0	9.08981e-39	0	9.08975e-39	0	9.09002e-39	0	9.09002e-39	0	
+0.04289	0	0	0	5.74252e-42	0	8.40779e-45	4.59107e-41	0	0	0	0	
+Matrix Memiliki Solusi Banyak

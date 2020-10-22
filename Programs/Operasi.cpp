@@ -35,7 +35,7 @@ using namespace std;
             if(maxId != j) TukarBaris(a, n, j, maxId, (swap == NULL ? NULL : &(*swap)));
             
             //Eliminasi Baris //Bentuk Segitiga Atas
-            for(int i = j+1; i < n; i++){
+            for(int i = j+1; i < (m > 0 ? m : n); i++){
                 float x = a[j][j];
                 float y = a[i][j];
                 //Bentuk Segitiga Atas
@@ -64,6 +64,9 @@ using namespace std;
                 }
             }
 
+            //Kembalikan jika 0 Pada Diagonal Utama
+            if(!a[j][maxId]) return j;
+            
             //Pertukarkan Baris
             if(maxId != j) TukarBaris(a, n*2, j, maxId, NULL);
 

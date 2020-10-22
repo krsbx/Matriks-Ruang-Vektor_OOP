@@ -39,7 +39,7 @@ using namespace std;
 
         //Deklarasi Matrix Solusi
         float x[n];
-        InverseClass::AddIdentitas(a, n);
+        InverseClass::AddIdentitas(a, n, nama);
         InverseClass::BentukIdentitas(a, n);
         Operasi::BackwardPhase(a, n*2, n);
 

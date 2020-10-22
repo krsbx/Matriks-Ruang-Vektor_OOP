@@ -48,7 +48,19 @@ using namespace std;
                 }
             }
             
-            Operasi::OperasiBarisElementer(temp, b, 0, n, i, &swap);
+            int f = Operasi::OperasiBarisElementer(temp, b, 0, n, i, &swap);
+            if(f != -1){
+                cout << "Berkemungkinan Tidak Bersolusi" << endl;
+                if(a[f][n]){
+                    cout << "Tidak Bisa Di proses" << endl;
+                    SaveOutput::SaveString(nama, "Matrix Tidak Bisa Di proses");
+                }else{
+                    cout << "Memiliki Solusi Banyak" << endl;
+                    SaveOutput::SaveString(nama, "Matrix Memiliki Solusi Banyak");
+                }
+                return;
+            }
+
             det[i+1] = Operasi::GetDeterminant(temp, n, swap);
         }
         

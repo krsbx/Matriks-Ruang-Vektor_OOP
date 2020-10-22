@@ -1,6 +1,6 @@
 #include "InverseClass.h"
 #include "SaveOutput.h"
-#include<iostream>
+#include <iostream>
 using namespace std;
 
     void InverseClass::InverseKeyboard(){
@@ -32,7 +32,7 @@ using namespace std;
         SaveOutput::SaveString(nama, "Inverse Dari Matrix : ");
         SaveOutput::SaveFile(nama, a, NULL, n, n);
 
-        AddIdentitas(a, n);
+        AddIdentitas(a, n, nama);
         BentukIdentitas(a, n);
         Operasi::BackwardPhase(a, n*2, n);
 
@@ -49,7 +49,7 @@ using namespace std;
         SaveOutput::SaveFileInverse(nama, a, n, n*2);
     }
 
-    void InverseClass::AddIdentitas(float a[][N], int n){
+    void InverseClass::AddIdentitas(float a[][N], int n, string nama){
         //Jadikan Augmented
         //Masukan Identitas
         for(int i = 0; i < n; i++){
@@ -60,7 +60,18 @@ using namespace std;
                     a[i][j] = 0;
             }
         }
-        Operasi::OBE_Inverse(a, n);
+        int f = Operasi::OBE_Inverse(a, n);
+        if(f != -1){
+            cout << "Berkemungkinan Tidak Bersolusi" << endl;
+            if(a[f][n]){
+                cout << "Tidak Bisa Di proses" << endl;
+                SaveOutput::SaveString(nama, "Matrix Tidak Bisa Di proses");
+            }else{
+                cout << "Memiliki Solusi Banyak" << endl;
+                SaveOutput::SaveString(nama, "Matrix Memiliki Solusi Banyak");
+            }
+            return;
+        }
     }
 
     void InverseClass::BentukIdentitas(float a[][N], int n){
