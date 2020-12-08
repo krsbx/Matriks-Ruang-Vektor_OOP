@@ -1,0 +1,40 @@
+Solusi Dari Matrix : 
+1	2	3	
+2	5	3	
+1	0	8	
+Ialah : 
+X[1] = -143
+X[2] = 47
+X[3] = 18
+Solusi Dari Matrix : 
+1	2	3	
+2	5	3	
+1	0	8	
+Ialah : 
+X[1] = -143
+X[2] = 47
+X[3] = 18
+Solusi Dari Matrix : 
+2	3	-1	
+4	4	-3	
+-2	3	-1	
+Ialah : 
+X[1] = 1
+X[2] = 2
+X[3] = 3
+Solusi Dari Matrix : 
+2	3	-1	
+4	4	-3	
+-2	3	-1	
+Ialah : 
+X[1] = 1
+X[2] = 2
+X[3] = 3
+Inverse Dari Matrix : 
+2	3	-1	
+4	4	-3	
+-2	3	-1	
+Ialah:
+0.25	0	-0.25	
+0.5	-0.2	0.1	
+1	-0.6	-0.2	

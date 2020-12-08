@@ -1,0 +1,16 @@
+Inverse Dari Matrix : 
+1	2	3	
+2	5	3	
+1	0	8	
+Ialah:
+-40	16	9	
+13	-5	-3	
+5	-2	-1	
+Solusi Dari Matrix : 
+2	3	-1	
+4	4	-3	
+-2	3	-1	
+Ialah : 
+X[1] = 1
+X[2] = 2
+X[3] = 3
